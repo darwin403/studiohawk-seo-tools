@@ -1,15 +1,28 @@
 {
-  "name": "tools",
-  "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.31",
+    "@fortawesome/free-solid-svg-icons": "^5.15.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.20.0",
+    "copy-to-clipboard": "^3.3.1",
+    "draft-js": "^0.11.7",
+    "foundation-sites": "^6.6.3",
+    "html2canvas": "^1.0.0-rc.7",
+    "lodash": "^4.17.20",
+    "metafetch": "^2.0.0",
     "next": "9.5.3",
+    "node-sass": "^4.14.1",
+    "papaparse": "^5.3.0",
+    "prop-types": "^15.7.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-dropzone": "^11.2.0",
+    "validator": "^13.1.17"
   }
 }
