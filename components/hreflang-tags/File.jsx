@@ -18,7 +18,7 @@ export default function File({ onUpload }) {
 
     acceptedFiles.forEach((file) => {
       // bad file extension
-      if (file.type !== "text/csv") {
+      if (file.name.split(".").slice(-1)[0] !== "csv") {
         setIsProcessing(false);
         return setErrors([{ message: "Only .csv files are allowed!" }]);
       }
