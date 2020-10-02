@@ -35,6 +35,7 @@ export default function File({ onUpload }) {
       Papa.parse(file, {
         header: true,
         skipEmptyLines: true,
+        comments: true,
         worker: true,
         complete: (results) => {
           setIsProcessing(false);

@@ -14,7 +14,7 @@ export default function Home() {
       <Head>
         <title>hreflang Tags Generator | StudioHawk SEO Tools</title>
       </Head>
-      <div className="chr-body-wrapper padding-right-3">
+      <div className="chr-body-wrapper padding-horizontal-3">
         <div className="margin-bottom-2">
           <h3 className="section-feature-text margin-0">
             hreflang Tags Generator

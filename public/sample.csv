@@ -1,6 +1,5 @@
-href,languageCode,countryCode
-https://en-us.example.com,en,us
-https://en-de.example.com,en,gb
-https://hi-in.example.com,hi,in
-https://fr-ca.example.com,fr,ca
-https://en-uk.example.com,en,ca
+href,languageCode,countryCode,description
+https://example.com,,,This generates a hreflang="x-default" tag
+https://example.com,,de,This generates a hreflang="x-default" tag
+https://en.example.com,en,,This generates a hreflang="en" tag
+https://en-us.example.com,en,us,This generates a hreflang="en-us" tag

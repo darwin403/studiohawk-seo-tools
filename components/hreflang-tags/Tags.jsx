@@ -4,7 +4,11 @@ import isEqual from "lodash/isEqual";
 import validator from "validator";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTimes,
+  faStar as faStarSolid,
+} from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 
 import countries from "@/utils/countries";
 import languages from "@/utils/languages";
@@ -49,6 +53,21 @@ function Tags(props) {
     setTags((prevTags) => {
       const newTags = [...prevTags];
       newTags.splice(index, 1);
+      return newTags;
+    });
+  };
+
+  const revertTag = (index) => {
+    setTags((prevTags) => {
+      const newTags = [...prevTags];
+      const thisTag = newTags[index];
+      const newTag = {
+        ...thisTag,
+        languageCode: "",
+        countryCode: "",
+      };
+
+      newTags.splice(index, 1, newTag);
       return newTags;
     });
   };
@@ -128,10 +147,28 @@ function Tags(props) {
                   </option>
                 ))}
               </select>
-              <div
-                className="position-absolute"
-                style={{ right: "-3rem" }}
-              >
+              <div className="position-absolute" style={{ left: "-3rem" }}>
+                <button
+                  type="button"
+                  className="button clear warning"
+                  style={{
+                    visibility: tags?.[i] ? "visible" : "hidden",
+                    opacity: 1,
+                  }}
+                  onClick={() => revertTag(i)}
+                  title={
+                    !!languageCode
+                      ? "Set x-default page"
+                      : "This is a x-default page"
+                  }
+                  disabled={!languageCode}
+                >
+                  <FontAwesomeIcon
+                    icon={languageCode ? faStarRegular : faStarSolid}
+                  />
+                </button>
+              </div>
+              <div className="position-absolute" style={{ right: "-3rem" }}>
                 <button
                   type="button"
                   className="button clear alert"
