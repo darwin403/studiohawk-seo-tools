@@ -96,6 +96,15 @@ function Tags(props) {
           tag(s) are shown below due to browser performance constraints.
         </div>
       )}
+      {tags.length > 0 && (
+        <small
+          className="float-right margin-0"
+          style={{ padding: ".85em 0", color: "gray" }}
+        >
+          The <FontAwesomeIcon icon={faStarSolid} color="#ffae00" /> denotes a{" "}
+          <code>x-default</code> webpage.
+        </small>
+      )}
       <form className="margin-vertical-2" onSubmit={handleSubmit}>
         {[...tags, defaultTag]
           .slice(0, MAX_TAGS_RENDER)

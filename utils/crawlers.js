@@ -1,0 +1,25 @@
+const crawlers = [
+  { name: "Google Search", userAgent: "Googlebot" },
+  { name: "Google Images", userAgent: "Googlebot-Image" },
+  { name: "Google Video", userAgent: "Googlebot-Video" },
+  { name: "Google News", userAgent: "Googlebot-News" },
+  { name: "Google AdSense", userAgent: "Mediapartners-Google" },
+  { name: "Google Ads: Desktop", userAgent: "AdsBot-Google" },
+  { name: "Google Ads: Mobile", userAgent: "AdsBot-Google-Mobile" },
+  { name: "Bing Search", userAgent: "Bingbot" },
+  { name: "Bing Images & Video", userAgent: "MSNBot-Media" },
+  { name: "Bing Preview", userAgent: "BingPreview" },
+  { name: "Bing Ads", userAgent: "AdIdxBot" },
+  { name: "DuckDuckGo", userAgent: "DuckDuckBot" },
+  { name: "Yahoo!", userAgent: "Slurp" },
+  { name: "Yandex", userAgent: "Yandexbot" },
+  { name: "Baidu", userAgent: "Baiduspider" },
+  { name: "Facebook", userAgent: "FacebookExternalHit" },
+  { name: "Alexa", userAgent: "ia_archiver" },
+  { name: "Apple", userAgent: "Applebot" },
+  { name: "LinkedIn", userAgent: "LinkedInBot" },
+  { name: "Twitter", userAgent: "Twitterbot" },
+  { name: "Any", userAgent: "*" },
+];
+
+export default crawlers;

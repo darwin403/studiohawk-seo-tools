@@ -1,15 +1,30 @@
 {
     "cSpell.words": [
+        "Ahrefs",
+        "Alexa",
+        "Applebot",
+        "Baiduspider",
+        "Bing",
+        "Bingbot",
+        "Botify",
         "Dropzone",
+        "Googlebot",
+        "Mediapartners",
+        "SERP",
+        "Twitterbot",
+        "Vercel",
+        "Yandex",
+        "Yandexbot",
+        "arial",
         "callout",
+        "codemirror",
         "fortawesome",
         "hreftags",
-        "papaparse",
-        "urlset",
-        "SERP",
-        "Vercel",
-        "arial",
         "metafetch",
-        "metatags"
+        "metatags",
+        "nocursor",
+        "papaparse",
+        "rogerbot",
+        "urlset"
     ]
 }

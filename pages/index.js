@@ -14,11 +14,14 @@ export default function Index() {
               StudioHawk SEO Tools
             </h1>
             <p>
+              <Link href="/serp-snippet">
+                <a className="chr-button">SERP Snippet Previewer</a>
+              </Link>
               <Link href="/hreflang-tags">
                 <a className="chr-button">hreflang Tags Generator</a>
               </Link>
-              <Link href="/serp-snippet">
-                <a className="chr-button">SERP Snippet Previewer</a>
+              <Link href="/robots-validate">
+                <a className="chr-button">robots.txt Validate</a>
               </Link>
             </p>
           </div>

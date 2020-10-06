@@ -3,15 +3,26 @@
  ***************************/
 
 @import "~foundation-sites/scss/foundation";
+
 @include foundation-xy-grid-classes;
+@include foundation-switch;
 @include foundation-card;
+@include foundation-prototype-display;
 @include foundation-prototype-position;
 @include foundation-prototype-spacing;
+@include foundation-flex-classes;
 //  @include foundation-everything($prototype: true);
 
+/***************************
+ * CODEMIRROR DEPENDENCIES *
+ ***************************/
+
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/material.css";
+
 /******************
-  * CUSTOM STYLING *
-  ******************/
+ * CUSTOM STYLING *
+ ******************/
 
 html,
 body {
@@ -73,4 +84,16 @@ body {
   color: #767676;
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 10;
+}
+
+.text-secondary {
+  color: get-color(secondary);
+}
+
+.text-muted {
+  color: darkgray;
+}
+
+.line-error {
+  background-color: get-color(alert) !important;
 }
