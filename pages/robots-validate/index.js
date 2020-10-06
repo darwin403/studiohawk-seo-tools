@@ -18,7 +18,7 @@ if (typeof window !== "undefined" && typeof window.navigator !== "undefined") {
 }
 
 export default function Index() {
-  const [url, setUrl] = useState("https://zomato.com");
+  const [url, setUrl] = useState("");
   const [agent, setAgent] = useState("Googlebot");
   const [robotsFromEditor, setRobotsFromEditor] = useState(false);
   const [robotsData, setRobotsData] = useState("");
