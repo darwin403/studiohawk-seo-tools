@@ -210,7 +210,7 @@ export default function Index() {
             />
           </div>
         </div>
-        {sitemaps && (
+        {sitemaps && sitemaps.length !== 0 && (
           <>
             <small>Sitemaps:</small>
             <ul className="vertical menu">
