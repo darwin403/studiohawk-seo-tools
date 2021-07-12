@@ -23,6 +23,9 @@ export default function Index() {
               <Link href="/robots-validate">
                 <a className="chr-button">robots.txt Validate</a>
               </Link>
+              <Link href="/content-decay">
+                <a className="chr-button">Content Decay</a>
+              </Link>
             </p>
           </div>
         </div>

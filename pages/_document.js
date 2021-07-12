@@ -14,7 +14,7 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap"
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800"
           />
           <link
             rel="stylesheet"

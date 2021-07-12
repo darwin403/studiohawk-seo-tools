@@ -28,7 +28,7 @@ export default function Compare({ includeResult }) {
     setIsFetching(true);
 
     axios
-      .get("/api/google", { params: { search, countryCode } })
+      .get("/api/googleSearch", { params: { search, countryCode } })
       .then((response) => setGoogleResult(response.data))
       .catch((err) => setError(err.response?.data?.message || err.message))
       .finally(() => setIsFetching(false));
