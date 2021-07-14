@@ -36,27 +36,34 @@ export function ConnectAnalytics() {
 
   // render: request access to analytics
   return (
-    <OAuth2Popup
-      openUrl="/api/oauth2/google"
-      saveUrl="/api/oauth2/google/save"
-      onSuccessText="oauth2:success"
-      onSuccess={() => {
-        mutateAccounts();
-      }}
-    >
-      <div className={"button large " + (isAccountsLoading ? "disabled" : "")}>
-        <div className="grid-x">
-          <div className="cell small-3">
-            <FontAwesomeIcon
-              icon={!isAccountsLoading ? faGooglePlusG : faSpinner}
-              size="2x"
-              spin={isAccountsLoading}
-            />
-          </div>
-          <div className="cell small-8">Connect Google Analytics</div>
-        </div>
-      </div>
-    </OAuth2Popup>
+    <div>
+      {!isAccountsLoading ? (
+        <p>
+          Let's begin by signing in your <b>Google Analytics</b> account
+        </p>
+      ) : (
+        <p>Loading ...</p>
+      )}
+
+      <OAuth2Popup
+        openUrl="/api/oauth2/google"
+        saveUrl="/api/oauth2/google/save"
+        onSuccessText="oauth2:success"
+        onSuccess={() => {
+          mutateAccounts();
+        }}
+      >
+        <img
+          src={
+            !isAccountsLoading
+              ? "/google_login.png"
+              : "/google_login_disabled.png"
+          }
+          style={{ cursor: "pointer" }}
+          alt="Sign in with Google"
+        />
+      </OAuth2Popup>
+    </div>
   );
 }
 
