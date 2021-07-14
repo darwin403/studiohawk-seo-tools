@@ -5,8 +5,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cookie from "js-cookie";
-import { useState, useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { Line } from "react-chartjs-2";
+import dayjs from "dayjs";
 
 export function Decay() {
   // cookies
@@ -138,20 +139,6 @@ const DisplayResults = ({ decayData }) => {
   const profileInfoJSON = cookie.get("GA_profileInfo");
   const profileInfo = profileInfoJSON ? JSON.parse(profileInfoJSON) : undefined;
 
-  const [activeArticle, setActiveArticle] = useState("");
-
-  const decayDataOfArticle = decayData[activeArticle]
-    ? [...decayData[activeArticle]].reverse()
-    : [];
-
-  console.log("decayDataOfArticle:", decayDataOfArticle);
-
-  // effect: set active article
-  useEffect(() => {
-    const decayDataFirstArticle = decayData ? Object.keys(decayData)?.[0] : "";
-    setActiveArticle(decayDataFirstArticle);
-  }, [decayData]);
-
   // render: no decaying articles
   if (!decayData || Object.keys(decayData).length === 0) {
     return (
@@ -166,67 +153,53 @@ const DisplayResults = ({ decayData }) => {
 
   // render: show decaying articles
   return (
-    <div className="grid-x grid-margin-x">
-      <div className="cell small-5">
-        {decayData && (
-          <ul>
-            {Object.keys(decayData).map((pageTitle, i) => (
-              <li key={i}>
-                <span
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setActiveArticle(pageTitle)}
-                >
-                  {pageTitle}
-                </span>
-                <a
-                  href={`https://google.com/search?q=site:${profileInfo.propertyUrl} "${pageTitle}"`}
-                  target="new"
-                  className="margin-left-1"
-                >
-                  <FontAwesomeIcon icon={faExternalLinkAlt} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <div className="cell small-6">
-        <h5>{activeArticle || "Article"}</h5>
-        <h6 className="subheader">
-          A plot of article's decaying pageviews over months
-        </h6>
-        <Line
-          data={{
-            datasets: [
-              {
-                label: "Pageviews",
-                data: decayDataOfArticle,
-                parsing: {
-                  xAxisKey: "yearMonth",
-                  yAxisKey: "pageviews",
-                },
-                fill: false,
-                backgroundColor: "#3db8ea",
-                borderColor: "#3db8ea",
-              },
-            ],
-          }}
-          options={{
-            scales: {
-              xAxes: [{ type: "time", position: "bottom" }],
-              yAxes: [
+    <ul style={{ listStyle: "none" }}>
+      {Object.keys(decayData).map((pageTitle, i) => (
+        <li key={i} style={{ margin: "1.25em 0" }}>
+          <div className="margin-vertical-2">
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => setActiveArticle(pageTitle)}
+            >
+              {pageTitle}
+            </span>
+            <a
+              href={`https://google.com/search?q=site:${profileInfo.propertyUrl} "${pageTitle}"`}
+              target="new"
+              className="margin-left-1"
+            >
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </a>
+          </div>
+          <Line
+            data={{
+              datasets: [
                 {
-                  ticks: {
-                    beginAtZero: true,
-                  },
+                  label: "Pageviews",
+                  data: decayData[pageTitle]
+                    ? [...decayData[pageTitle]]
+                        .reverse()
+                        .map(({ yearMonth, pageviews }) => ({
+                          x: dayjs(yearMonth).format("MMM YY"),
+                          y: pageviews,
+                        }))
+                    : [],
+                  fill: false,
+                  backgroundColor: "#3db8ea",
+                  borderColor: "#3db8ea",
                 },
               ],
-            },
-          }}
-          height={100}
-        />
-      </div>
-    </div>
+            }}
+            options={{
+              plugins: {
+                legend: { display: false },
+              },
+            }}
+            height={75}
+          />
+        </li>
+      ))}
+    </ul>
   );
 };
 

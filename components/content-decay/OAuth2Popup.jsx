@@ -19,22 +19,24 @@ export const OAuth2Popup = ({
   useEffect(() => {
     let subscribePopup;
 
-    if (popup?.closed === false) {
+    if (popup) {
       subscribePopup = setInterval(() => {
+        // handle popup close
         if (popup.closed === true) {
           clearInterval(subscribePopup);
           onClose?.(popup);
           return;
         }
 
-        // check if same origin
+        // check if popup same origin
         try {
           popup.parent.document;
         } catch (err) {
           return;
         }
 
-        popup.onload = () => {
+        // check if oauth2 success
+        if (popup.document.readyState === "complete") {
           const pageContent = popup.window.document.documentElement.innerHTML;
 
           if (popup.window.location.pathname !== saveUrl) {
@@ -44,12 +46,8 @@ export const OAuth2Popup = ({
           if (pageContent.includes(onSuccessText)) {
             onSuccess?.(popup);
             popup.close();
-          } else {
-            setTimeout(() => {
-              popup.close();
-            }, 1000);
           }
-        };
+        }
       }, 100);
     }
 

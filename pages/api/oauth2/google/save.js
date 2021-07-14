@@ -6,13 +6,22 @@ export default async (req, res) => {
     const { code } = req.query;
     const { tokens } = await googleOauth2.getToken(code);
 
-    // save tokens as cookie on browser
+    // save GA access token
     res.setHeader(
       "Set-Cookie",
       serialize("GA_accessToken", tokens.access_token, {
         path: "/",
         expires: new Date(tokens.expiry_date),
         maxAge: "3600",
+      })
+    );
+
+    // remove GA profile Id
+    res.setHeader(
+      "Set-Cookie",
+      serialize("GA_profileId", "", {
+        path: "/",
+        maxAge: "1",
       })
     );
 
