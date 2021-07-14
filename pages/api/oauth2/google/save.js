@@ -6,24 +6,19 @@ export default async (req, res) => {
     const { code } = req.query;
     const { tokens } = await googleOauth2.getToken(code);
 
-    // save GA access token
-    res.setHeader(
-      "Set-Cookie",
+    res.setHeader("Set-Cookie", [
+      // save GA access token
       serialize("GA_accessToken", tokens.access_token, {
         path: "/",
         expires: new Date(tokens.expiry_date),
         maxAge: "3600",
-      })
-    );
-
-    // remove GA profile Id
-    res.setHeader(
-      "Set-Cookie",
+      }),
+      // remove GA profile Id
       serialize("GA_profileId", "", {
         path: "/",
         maxAge: "1",
-      })
-    );
+      }),
+    ]);
 
     return res.send("oauth2:success");
   } catch (err) {
