@@ -18,7 +18,7 @@ class MyDocument extends Document {
           />
           <link
             rel="stylesheet"
-            href="https://studiohawk.com.au/assets/themes/chr-studiohawk/dist/css/chr-main-styles.h.04e288919dd7.min.css?x90453"
+            href="https://cdn-bmdmm.nitrocdn.com/OxJWvJfybhFfQJHQBydkoZJrDKWthmzq/assets/static/optimized/rev-4cdbfbd/studiohawk.com.au/combinedCss/nitro-min-noimport-7e2b4849719a7f6a7538fab40b6270f8-stylesheet.css"
           />
         </Head>
         <body>
